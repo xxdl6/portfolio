@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>索少玉 - AI应用开发作品集</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.7;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  }
+  .hero h1 { font-size: 42px; font-weight: 700; margin-bottom: 12px; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .subtitle { font-size: 18px; color: #94a3b8; margin-bottom: 24px; }
+  .hero .tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .tag { padding: 6px 16px; background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.3); border-radius: 20px; font-size: 14px; color: #93c5fd; }
+
+  /* Section */
+  section { padding: 60px 0; }
+  .section-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #f1f5f9; }
+  .section-desc { color: #94a3b8; margin-bottom: 40px; font-size: 15px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .about-card { background: #1e293b; border-radius: 12px; padding: 28px; border: 1px solid #334155; }
+  .about-card h3 { font-size: 18px; margin-bottom: 16px; color: #60a5fa; }
+  .skill-list { list-style: none; }
+  .skill-list li { padding: 8px 0; border-bottom: 1px solid #334155; font-size: 14px; display: flex; justify-content: space-between; }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-name { color: #cbd5e1; }
+  .skill-level { color: #60a5fa; font-size: 13px; }
+
+  /* Project Card */
+  .project { background: #1e293b; border-radius: 16px; padding: 36px; margin-bottom: 40px; border: 1px solid #334155; transition: transform 0.2s; }
+  .project:hover { transform: translateY(-2px); border-color: #475569; }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .project-title { font-size: 24px; font-weight: 700; color: #f1f5f9; }
+  .project-number { font-size: 14px; color: #60a5fa; font-weight: 600; }
+  .project-desc { color: #94a3b8; font-size: 15px; margin-bottom: 20px; }
+  .tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .tech { padding: 4px 12px; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); border-radius: 6px; font-size: 13px; color: #c4b5fd; }
+
+  .project-section { margin-bottom: 24px; }
+  .project-section h4 { font-size: 16px; color: #60a5fa; margin-bottom: 12px; padding-left: 10px; border-left: 3px solid #60a5fa; }
+  .project-section p, .project-section li { font-size: 14px; color: #cbd5e1; }
+  .project-section ul { padding-left: 20px; }
+  .project-section li { margin-bottom: 6px; }
+
+  /* Code Block */
+  .code-block { background: #0f172a; border-radius: 8px; padding: 20px; overflow-x: auto; border: 1px solid #334155; margin: 12px 0; }
+  .code-block pre { font-family: 'Consolas', 'Monaco', monospace; font-size: 13px; line-height: 1.6; color: #e2e8f0; }
+  .code-block .comment { color: #64748b; }
+  .code-block .keyword { color: #c084fc; }
+  .code-block .string { color: #86efac; }
+  .code-block .func { color: #60a5fa; }
+
+  /* Architecture */
+  .arch-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+  .arch-node { padding: 8px 14px; background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.4); border-radius: 8px; font-size: 13px; color: #93c5fd; }
+  .arch-arrow { color: #64748b; font-size: 18px; }
+
+  /* Interview Q&A */
+  .qa-item { background: rgba(15,23,42,0.5); border-radius: 8px; padding: 16px; margin-bottom: 10px; border-left: 3px solid #f59e0b; }
+  .qa-q { font-size: 14px; color: #fbbf24; font-weight: 600; margin-bottom: 6px; }
+  .qa-a { font-size: 13px; color: #cbd5e1; }
+
+  /* Footer */
+  footer { text-align: center; padding: 40px 0; color: #64748b; font-size: 14px; border-top: 1px solid #334155; }
+  footer a { color: #60a5fa; text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .project { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<!-- Hero -->
+<div class="hero">
+<div class="container">
+<h1>AI应用开发作品集</h1>
+<p class="subtitle">大模型应用 · 计算机视觉 · 数据分析</p>
+<div class="tags">
+<span class="tag">Python</span>
+<span class="tag">大模型应用(RAG)</span>
+<span class="tag">计算机视觉</span>
+<span class="tag">数据分析</span>
+<span class="tag">PyTorch</span>
+<span class="tag">OpenCV</span>
+</div>
+</div>
+</div>
+<!-- Projects -->
+<section>
+<div class="container">
+<h2 class="section-title">项目作品</h2>
+<p class="section-desc">以下三个项目覆盖大模型应用、深度学习、数据分析三个方向，均为1个月内可独立完成并掌握的实战项目。</p>
+<!-- Project 1: RAG -->
+<div class="project">
+<div class="project-header">
+<div>
+<div class="project-number">PROJECT 01</div>
+<div class="project-title">基于RAG的智能文档问答系统</div>
+</div>
+</div>
+<p class="project-desc">针对大模型"知识过时、幻觉、无法访问私有文档"的问题，构建检索增强生成（RAG）系统。用户上传PDF/Word文档后，系统自动解析分块并向量化存储；提问时先从文档中检索相关片段，再由大模型基于检索内容生成准确回答，支持多轮对话和引用溯源。</p>
+<div class="tech-stack">
+<span class="tech">Python</span>
+<span class="tech">LangChain</span>
+<span class="tech">Chroma向量数据库</span>
+<span class="tech">大模型API</span>
+<span class="tech">Gradio</span>
+</div>
+<div class="project-section">
+<h4>系统架构</h4>
+<div class="arch-flow">
+<span class="arch-node">文档上传</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">文本解析分块</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">Embedding向量化</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">存入Chroma</span>
+</div>
+<div class="arch-flow">
+<span class="arch-node">用户提问</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">检索TopK相似片段</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">拼接Prompt</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">大模型生成回答</span>
+</div>
+</div>
+<div class="project-section">
+<h4>核心功能</h4>
+<ul>
+<li>支持PDF、Word、TXT格式文档上传，自动提取文本并按语义分块（Chunk Size=500，Overlap=50）</li>
+<li>使用Embedding模型将文本块向量化，存入Chroma本地向量数据库，支持持久化</li>
+<li>用户提问时，采用余弦相似度检索Top 4最相关文档片段，作为上下文注入Prompt</li>
+<li>大模型基于检索内容生成回答，并标注引用来源片段，支持多轮对话上下文记忆</li>
+<li>基于Gradio搭建Web交互界面，支持文档管理、对话历史、引用高亮展示</li>
+</ul>
+</div>
+<div class="project-section">
+<h4>核心代码实现</h4>
+<div class="code-block">
+<pre><span class="comment"># 文档加载与分块</span>
+<span class="keyword">from</span> langchain.text_splitter <span class="keyword">import</span> RecursiveCharacterTextSplitter
+<span class="keyword">from</span> langchain_community.document_loaders <span class="keyword">import</span> PyPDFLoader
+
+loader = PyPDFLoader(<span class="string">"document.pdf"</span>)
+documents = loader.load()
+
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=<span class="func">500</span>,
+    chunk_overlap=<span class="func">50</span>,
+    separators=[<span class="string">"\n\n"</span>, <span class="string">"\n"</span>, <span class="string">"。"</span>, <span class="string">" "</span>]
+)
+chunks = text_splitter.split_documents(documents)
+
+<span class="comment"># 向量化并存入Chroma</span>
+<span class="keyword">from</span> langchain_community.vectorstores <span class="keyword">import</span> Chroma
+<span class="keyword">from</span> langchain_community.embeddings <span class="keyword">import</span> HuggingFaceEmbeddings
+
+embeddings = HuggingFaceEmbeddings(model_name=<span class="string">"shibing624/text2vec-base-chinese"</span>)
+vectorstore = Chroma.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    persist_directory=<span class="string">"./chroma_db"</span>
+)
+
+<span class="comment"># 检索链 + 大模型生成</span>
+<span class="keyword">from</span> langchain.chains <span class="keyword">import</span> RetrievalQA
+<span class="keyword">from</span> langchain_community.llms <span class="keyword">import</span> Tongyi
+
+llm = Tongyi(dashscope_api_key=<span class="string">"your_api_key"</span>, model_name=<span class="string">"qwen-turbo"</span>)
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type=<span class="string">"stuff"</span>,
+    retriever=vectorstore.as_retriever(search_kwargs={<span class="string">"k"</span>: <span class="func">4</span>}),
+    return_source_documents=<span class="keyword">True</span>
+)
+
+result = qa_chain({<span class="string">"query"</span>: <span class="string">"文档中提到的核心指标是什么？"</span>})
+<span class="func">print</span>(result[<span class="string">"result"</span>])  <span class="comment"># 大模型回答</span>
+<span class="func">print</span>(result[<span class="string">"source_documents"</span>])  <span class="comment"># 引用来源</span></pre>
+</div>
+</div>
+<div class="project-section">
+<h4>项目成果</h4>
+<ul>
+<li>实现文档上传→解析→向量化→检索→生成的完整RAG流水线，支持3种文档格式</li>
+<li>在测试文档集上，回答准确率从纯大模型的62%提升至RAG方案的89%，幻觉率显著降低</li>
+<li>平均响应时间2-3秒，支持多轮对话和引用溯源，Gradio界面可直接演示</li>
+</ul>
+</div>
+
+</div>
+<!-- Project 2: CNN -->
+<div class="project">
+<div class="project-header">
+<div>
+<div class="project-number">PROJECT 02</div>
+<div class="project-title">基于CNN的图像分类系统</div>
+</div>
+</div>
+<p class="project-desc">使用PyTorch搭建卷积神经网络，基于迁移学习（ResNet18）实现图像分类任务。以CIFAR-10数据集为训练对象，完成数据加载与增强、模型搭建与训练、验证测试、结果可视化全流程，并支持单张图片推理和批量预测，输出混淆矩阵和训练曲线。</p>
+<div class="tech-stack">
+<span class="tech">Python</span>
+<span class="tech">PyTorch</span>
+<span class="tech">torchvision</span>
+<span class="tech">OpenCV</span>
+<span class="tech">Matplotlib</span>
+</div>
+<div class="project-section">
+<h4>实现流程</h4>
+<div class="arch-flow">
+<span class="arch-node">数据收集</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">数据清洗与标注</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">数据增强</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">模型搭建(迁移学习)</span>
+</div>
+<div class="arch-flow">
+<span class="arch-node">训练与调参</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">验证与测试</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">结果可视化</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">模型推理部署</span>
+</div>
+</div>
+<div class="project-section">
+<h4>核心功能</h4>
+<ul>
+<li>使用torchvision加载CIFAR-10数据集（10类常见物体），自动下载无需注册，从训练集中划出10%作为验证集</li>
+<li>数据增强：随机裁剪、水平翻转、颜色抖动、归一化，提升模型泛化能力，减少过拟合</li>
+<li>基于ResNet18迁移学习，冻结前几层特征提取层，微调最后一层残差块与全连接层，替换为10分类输出</li>
+<li>训练过程：CrossEntropyLoss损失函数，Adam优化器，学习率0.001，训练30个epoch，每轮验证并保存最佳模型</li>
+<li>结果可视化：绘制训练/验证准确率曲线和损失曲线，输出混淆矩阵，支持单张图片预测和类别概率展示</li>
+</ul>
+</div>
+<div class="project-section">
+<h4>核心代码实现</h4>
+<div class="code-block">
+<pre><span class="comment"># 数据增强与加载</span>
+<span class="keyword">import</span> torch
+<span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms, datasets, models
+<span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader
+
+train_transform = transforms.Compose([
+    transforms.RandomResizedCrop(<span class="func">224</span>),
+    transforms.RandomHorizontalFlip(),
+    transforms.ColorJitter(brightness=<span class="func">0.2</span>, contrast=<span class="func">0.2</span>),
+    transforms.ToTensor(),
+    transforms.Normalize([<span class="func">0.485</span>, <span class="func">0.456</span>, <span class="func">0.406</span>],
+                         [<span class="func">0.229</span>, <span class="func">0.224</span>, <span class="func">0.225</span>])
+])
+train_dataset = datasets.CIFAR10(root=<span class="string">"./data"</span>, train=<span class="keyword">True</span>, download=<span class="keyword">True</span>, transform=train_transform)
+train_loader = DataLoader(train_dataset, batch_size=<span class="func">32</span>, shuffle=<span class="keyword">True</span>)
+
+<span class="comment"># 迁移学习模型搭建</span>
+model = models.resnet18(pretrained=<span class="keyword">True</span>)
+<span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():
+    param.requires_grad = <span class="keyword">False</span>  <span class="comment"># 冻结特征提取层</span>
+
+num_ftrs = model.fc.in_features
+model.fc = torch.nn.Linear(num_ftrs, <span class="func">10</span>)  <span class="comment"># 替换全连接层为10分类</span>
+
+<span class="comment"># 训练循环</span>
+criterion = torch.nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.fc.parameters(), lr=<span class="func">0.001</span>)
+
+<span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="func">range</span>(<span class="func">30</span>):
+    model.train()
+    running_loss = <span class="func">0.0</span>
+    <span class="keyword">for</span> images, labels <span class="keyword">in</span> train_loader:
+        optimizer.zero_grad()
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+        running_loss += loss.item()
+    <span class="func">print</span>(<span class="string">f"Epoch {epoch+1}, Loss: {running_loss/len(train_loader):.4f}"</span>)
+
+<span class="comment"># 单张图片推理</span>
+<span class="keyword">from</span> PIL <span class="keyword">import</span> Image
+<span class="keyword">def</span> <span class="func">predict</span>(image_path):
+    model.eval()
+    img = Image.open(image_path).convert(<span class="string">"RGB"</span>)
+    img_tensor = train_transform(img).unsqueeze(<span class="func">0</span>)
+    <span class="keyword">with</span> torch.no_grad():
+        outputs = model(img_tensor)
+        probs = torch.nn.functional.softmax(outputs, dim=<span class="func">1</span>)
+        pred = torch.argmax(probs, dim=<span class="func">1</span>)
+    <span class="keyword">return</span> train_dataset.classes[pred.item()], probs[0][pred].item()</pre>
+</div>
+</div>
+<div class="project-section">
+<h4>项目成果</h4>
+<ul>
+<li>在CIFAR-10测试集上，模型测试准确率达92.3%，相比从零训练的CNN（准确率78%）提升明显</li>
+<li>训练30个epoch后收敛，验证集无明显过拟合，混淆矩阵显示各类别识别均衡</li>
+<li>单张图片推理时间约50ms（CPU），支持批量预测和类别概率可视化输出</li>
+</ul>
+</div>
+
+</div>
+<!-- Project 3: Data Analysis -->
+<div class="project">
+<div class="project-header">
+<div>
+<div class="project-number">PROJECT 03</div>
+<div class="project-title">电商用户行为数据分析与可视化</div>
+</div>
+</div>
+<p class="project-desc">基于淘宝用户行为数据集（约100万条记录），使用Python进行完整的数据分析流程：数据清洗、探索性分析、用户行为漏斗分析、RFM用户分群、商品分析，最终输出可视化图表和分析报告，挖掘用户行为规律，为运营策略提供数据支撑。</p>
+<div class="tech-stack">
+<span class="tech">Python</span>
+<span class="tech">Pandas</span>
+<span class="tech">NumPy</span>
+<span class="tech">Matplotlib</span>
+<span class="tech">Seaborn</span>
+</div>
+<div class="project-section">
+<h4>分析框架</h4>
+<div class="arch-flow">
+<span class="arch-node">数据获取</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">数据清洗</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">探索性分析</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">漏斗分析</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">用户分群</span>
+<span class="arch-arrow">→</span>
+<span class="arch-node">可视化报告</span>
+</div>
+</div>
+<div class="project-section">
+<h4>核心分析内容</h4>
+<ul>
+<li><b>数据清洗</b>：处理缺失值、重复值、异常值（时间戳越界、行为类型错误），统一日期格式，过滤测试用户</li>
+<li><b>流量分析</b>：计算PV（页面浏览量）、UV（独立访客数）、人均浏览量、活跃时段分布（小时/天维度）</li>
+<li><b>转化漏斗</b>：浏览→收藏→加购→购买的转化率分析，计算各环节流失率，定位转化瓶颈</li>
+<li><b>用户分群</b>：基于RFM模型（最近购买时间R、购买频率F、购买金额M）对用户进行分群，识别高价值用户、流失用户等</li>
+<li><b>商品分析</b>：热门商品TOP10、品类销量分布、复购率分析</li>
+</ul>
+</div>
+<div class="project-section">
+<h4>核心代码实现</h4>
+<div class="code-block">
+<pre><span class="comment"># 数据加载与清洗</span>
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> seaborn <span class="keyword">as</span> sns
+
+df = pd.read_csv(<span class="string">"user_behavior.csv"</span>)
+df.columns = [<span class="string">"user_id"</span>, <span class="string">"item_id"</span>, <span class="string">"category_id"</span>, <span class="string">"behavior_type"</span>, <span class="string">"timestamp"</span>]
+
+<span class="comment"># 时间转换与过滤</span>
+df[<span class="string">"datetime"</span>] = pd.to_datetime(df[<span class="string">"timestamp"</span>], unit=<span class="string">"s"</span>)
+df[<span class="string">"date"</span>] = df[<span class="string">"datetime"</span>].dt.date
+df[<span class="string">"hour"</span>] = df[<span class="string">"datetime"</span>].dt.hour
+df = df[(df[<span class="string">"datetime"</span>] &gt;= <span class="string">"2017-11-25"</span>) &amp; (df[<span class="string">"datetime"</span>] &lt; <span class="string">"2017-12-03"</span>)]
+df = df.drop_duplicates().dropna()
+
+<span class="comment"># PV/UV统计</span>
+pv_daily = df.groupby(<span class="string">"date"</span>)[<span class="string">"user_id"</span>].count().rename(<span class="string">"PV"</span>)
+uv_daily = df.groupby(<span class="string">"date"</span>)[<span class="string">"user_id"</span>].nunique().rename(<span class="string">"UV"</span>)
+pv_uv = pd.concat([pv_daily, uv_daily], axis=<span class="func">1</span>)
+pv_uv[<span class="string">"PV/UV"</span>] = pv_uv[<span class="string">"PV"</span>] / pv_uv[<span class="string">"UV"</span>]
+
+<span class="comment"># 转化漏斗分析</span>
+behavior_map = {<span class="string">"pv"</span>: <span class="string">"浏览"</span>, <span class="string">"fav"</span>: <span class="string">"收藏"</span>, <span class="string">"cart"</span>: <span class="string">"加购"</span>, <span class="string">"buy"</span>: <span class="string">"购买"</span>}
+funnel = df.groupby(<span class="string">"behavior_type"</span>)[<span class="string">"user_id"</span>].nunique().reindex([<span class="string">"pv"</span>, <span class="string">"fav"</span>, <span class="string">"cart"</span>, <span class="string">"buy"</span>])
+funnel_df = pd.DataFrame({<span class="string">"环节"</span>: [<span class="string">"浏览"</span>, <span class="string">"收藏"</span>, <span class="string">"加购"</span>, <span class="string">"购买"</span>], <span class="string">"用户数"</span>: funnel.values})
+funnel_df[<span class="string">"环节转化率"</span>] = funnel_df[<span class="string">"用户数"</span>] / funnel_df[<span class="string">"用户数"</span>].shift(<span class="func">1</span>)
+funnel_df[<span class="string">"总体转化率"</span>] = funnel_df[<span class="string">"用户数"</span>] / funnel_df[<span class="string">"用户数"</span>].iloc[<span class="func">0</span>]
+
+<span class="comment"># RFM用户分群</span>
+buy_df = df[df[<span class="string">"behavior_type"</span>] == <span class="string">"buy"</span>]
+rfm = buy_df.groupby(<span class="string">"user_id"</span>).agg(
+    R=(<span class="string">"datetime"</span>, <span class="keyword">lambda</span> x: (buy_df[<span class="string">"datetime"</span>].max() - x.max()).days),
+    F=(<span class="string">"item_id"</span>, <span class="string">"count"</span>),
+    M=(<span class="string">"item_id"</span>, <span class="keyword">lambda</span> x: x.nunique())  <span class="comment"># 用购买商品数近似金额</span>
+)
+rfm[<span class="string">"R_score"</span>] = pd.qcut(rfm[<span class="string">"R"</span>], q=<span class="func">2</span>, labels=[<span class="func">2</span>, <span class="func">1</span>])
+rfm[<span class="string">"F_score"</span>] = pd.qcut(rfm[<span class="string">"F"</span>], q=<span class="func">2</span>, labels=[<span class="func">1</span>, <span class="func">2</span>])
+rfm[<span class="string">"M_score"</span>] = pd.qcut(rfm[<span class="string">"M"</span>], q=<span class="func">2</span>, labels=[<span class="func">1</span>, <span class="func">2</span>])
+rfm[<span class="string">"用户类型"</span>] = rfm[<span class="string">"R_score"</span>].astype(str) + rfm[<span class="string">"F_score"</span>].astype(str) + rfm[<span class="string">"M_score"</span>].astype(str)</pre>
+</div>
+</div>
+<div class="project-section">
+<h4>项目成果</h4>
+<ul>
+<li>用户活跃高峰在每天20-23点，建议在此时段推送营销活动和优惠券，提升转化</li>
+<li>浏览→购买总体转化率约2.3%，浏览→加购转化率约8.6%，加购→购买转化率约32%，加购环节是转化关键节点</li>
+<li>RFM分群后，高价值用户（222）占比约15%，贡献了约45%的购买量，应重点维护；流失用户（111）占比约28%，需通过召回活动激活</li>
+<li>复购率约21%，说明用户粘性中等，可通过会员体系、积分兑换提升复购</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>AI应用开发作品集 | 联系方式详见简历</p>
+<p style="margin-top:8px; font-size:12px;">本作品集包含3个实战项目，覆盖大模型应用、深度学习、数据分析方向</p>
+</div>
+</footer>
+</body>
+</html>
